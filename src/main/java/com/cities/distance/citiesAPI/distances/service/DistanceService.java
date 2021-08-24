@@ -65,6 +65,8 @@ public class DistanceService {
 
         List<Long> allIds = cityRepository.getAllIds();
 
+
+        //for que demora mt pra carregar
         for (int i = 0; allIds.iterator().hasNext() ; i++) {
             Long next = allIds.iterator().next();
             Double distancia = distanceByCubeInMeters(cidadeNome.getId(),next);
@@ -75,7 +77,9 @@ public class DistanceService {
             }
 
         }
-       /* for (City cidade: content) {
+
+        //for que pega uma cidade aleatoria
+       /*  for (City cidade: content) {
             Double distance = distanceByCubeInMeters(cidade.getId(), cidadeNome.getId());
             if (distance < menorDistancia) {
                 menorDistancia = distance;
