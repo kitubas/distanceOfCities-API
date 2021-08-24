@@ -3,10 +3,8 @@ package com.cities.distance.citiesAPI.distances;
 import com.cities.distance.citiesAPI.distances.service.DistanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/distances")
@@ -49,5 +47,10 @@ public class DistanceResource {
         return service.returnTheNames(city1, city2);
     }*/
 
+
+    @GetMapping("/closest/{name}")
+    public String closest(@PathVariable final String name, Pageable page){
+        return service.getClosest(name, page);
+    }
 
 }

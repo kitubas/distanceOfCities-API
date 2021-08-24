@@ -3,6 +3,7 @@ package com.cities.distance.citiesAPI.cities;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CityRepository extends JpaRepository<City, Long> {
@@ -14,6 +15,12 @@ public interface CityRepository extends JpaRepository<City, Long> {
     Double distanceByCube(final Double lat1, final Double lon1, final Double lat2, final Double lon2);
 
     Optional<City> findByName(String name);
+
+    @Query(value = "SELECT id FROM cidade", nativeQuery = true)
+    List<Long> getAllIds();
+
+
+
 
 
 }
