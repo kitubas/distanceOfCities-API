@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DistanceService {
@@ -36,4 +37,29 @@ public class DistanceService {
 
         return cityRepository.distanceByCube(p1.getX(), p1.getY(), p2.getX(), p2.getY());
     }
+
+    public Double distanceByName(String city1, String city2) {
+        Optional<City> byName1 = cityRepository.findByName(city1);
+        Optional<City> byName2 = cityRepository.findByName(city2);
+
+        return distanceByCubeInMeters(byName1.get().getId(), byName2.get().getId());
+
+
+    }
+
+    /*public String returnTheNames(String city1, String city2) {
+        Optional<City> byName1 = cityRepository.findByName(city1);
+        Optional<City> byName2 = cityRepository.findByName(city2);
+
+        String s = "começo  ";
+        if (byName1.isPresent())
+            s = byName1.get().getName();
+
+        if (byName2.isPresent())
+            s = byName2.get().getName();
+
+        return s;
+
+
+    }*/
 }

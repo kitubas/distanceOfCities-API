@@ -33,5 +33,21 @@ public class DistanceResource {
         return service.distanceByCubeInMeters(city1, city2);
     }
 
+    @GetMapping("/by-name")
+    public Double distanceByName(@RequestParam(name = "from") final String city1,
+                                 @RequestParam(name = "to") final String city2){
+
+        log.info("byName");
+        return service.distanceByName(city1, city2);
+
+    }
+
+    /*@GetMapping("/teste-name")
+    public String returnTheNames(@RequestParam(name = "from") final String city1,
+                                @RequestParam(name = "to") final String city2){
+
+        return service.returnTheNames(city1, city2);
+    }*/
+
 
 }
