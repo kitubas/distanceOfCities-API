@@ -67,6 +67,7 @@ public class DistanceService {
 
         City cidadeNome = cityByName.get();
         Long cidadeNomeId = cidadeNome.getId();
+        String s = "inicio";
 
         //Page<City> all1 = cityRepository.findAll(page);
 
@@ -99,7 +100,8 @@ public class DistanceService {
                 e.getCause();
                 e.getLocalizedMessage();
                 e.getMessage();
-                return closestCity;
+                return "A cidade mais próxima de " +cidadeNome.getName() + " é: "  + closestCity +
+                        ". Distância de: " + menorDistancia + "metros" + " (caiu no try-catch)";
             }
 
 
@@ -108,7 +110,8 @@ public class DistanceService {
 
         }
 
-        String s = "Cidade mais próxima: " + closestCity + "distância de: " + menorDistancia;
+        s = "A cidade mais próxima de " +cidadeNome.getName() + " é: "  + closestCity +
+                ". Distância de: " + menorDistancia + "metros";
 
         //for que pega uma cidade aleatoria
        /*  for (City cidade: content) {
