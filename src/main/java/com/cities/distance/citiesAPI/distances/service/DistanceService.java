@@ -57,6 +57,7 @@ public class DistanceService {
         String closestCity = "inicio";
 
         City cidadeNome = cityByName.get();
+        Long cidadeNomeId = cidadeNome.getId();
 
         //Page<City> all1 = cityRepository.findAll(page);
 
@@ -68,15 +69,13 @@ public class DistanceService {
 
         //for que demora mt pra carregar
         for (int i = 0; i<allIds.size() ; i++) {
-            Long next = allIds.get(0);
-            Double distancia = distanceByCubeInMeters(cidadeNome.getId(),next);
+            Long next = allIds.get(i);
+            Double distancia = distanceByCubeInMeters(cidadeNomeId,next);
             if (distancia < menorDistancia) {
                 menorDistancia = distancia;
                 closestCity = cityRepository.findById(next).get().getName();
-                allIds.remove(0);
 
             }
-            allIds.remove(0);
         }
 
         //for que pega uma cidade aleatoria
