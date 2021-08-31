@@ -98,6 +98,7 @@ public class DistanceService {
                 e.getCause();
                 e.getLocalizedMessage();
                 e.getMessage();
+                return menorDistancia.toString();
             }
 
 
@@ -115,7 +116,7 @@ public class DistanceService {
             }
         }*/
 
-        return closestCity;
+        return closestCity.toString();
 
 
 
