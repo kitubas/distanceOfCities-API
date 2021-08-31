@@ -108,6 +108,8 @@ public class DistanceService {
 
         }
 
+        String s = "Cidade mais próxima: " + closestCity + "distância de: " + menorDistancia;
+
         //for que pega uma cidade aleatoria
        /*  for (City cidade: content) {
             Double distance = distanceByCubeInMeters(cidade.getId(), cidadeNome.getId());
@@ -117,7 +119,7 @@ public class DistanceService {
             }
         }*/
 
-        return closestCity;
+        return s;
 
 
 
