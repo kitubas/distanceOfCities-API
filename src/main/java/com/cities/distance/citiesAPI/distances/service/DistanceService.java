@@ -73,11 +73,10 @@ public class DistanceService {
             if (distancia < menorDistancia) {
                 menorDistancia = distancia;
                 closestCity = cityRepository.findById(next).get().getName();
-                allIds.remove(0);
+                allIds.iterator().remove();
 
             }
-
-            allIds.remove(0);
+            allIds.iterator().remove();
         }
 
         //for que pega uma cidade aleatoria
