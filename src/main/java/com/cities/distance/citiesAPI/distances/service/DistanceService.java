@@ -67,7 +67,7 @@ public class DistanceService {
 
 
         //for que demora mt pra carregar
-        for (int i = 0; allIds.iterator().hasNext() ; i++) {
+        for (int i = 0; i<allIds.size() ; i++) {
             Long next = allIds.get(0);
             Double distancia = distanceByCubeInMeters(cidadeNome.getId(),next);
             if (distancia < menorDistancia) {
