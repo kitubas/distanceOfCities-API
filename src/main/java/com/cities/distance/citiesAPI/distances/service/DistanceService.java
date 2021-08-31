@@ -68,15 +68,15 @@ public class DistanceService {
 
         //for que demora mt pra carregar
         for (int i = 0; allIds.iterator().hasNext() ; i++) {
-            Long next = allIds.iterator().next();
+            Long next = allIds.get(0);
             Double distancia = distanceByCubeInMeters(cidadeNome.getId(),next);
             if (distancia < menorDistancia) {
                 menorDistancia = distancia;
                 closestCity = cityRepository.findById(next).get().getName();
-                allIds.iterator().remove();
+                allIds.remove(0);
 
             }
-            allIds.iterator().remove();
+            allIds.remove(0);
         }
 
         //for que pega uma cidade aleatoria
