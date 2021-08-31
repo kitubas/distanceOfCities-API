@@ -75,20 +75,22 @@ public class DistanceService {
         //List<City> content = all1.getContent();
 
         List<Long> allIds = cityRepository.getAllIds();
+        int tamanho = allIds.size();
 
 
         //for que demora mt pra carregar
-        for (int i = 0; i<allIds.size() ; i++) {
+        for (int i = 0; i<tamanho ; i++) {
             Long next = allIds.get(i);
+            if (i >= tamanho ) {
+                break;
+            }
             if (next == cidadeNomeId) {
                 i++;
             }
             if (next.equals(cidadeNomeId)){
                 i++;
             }
-            if (i >= allIds.size() || i>= allIds.indexOf(i)) {
-                break;
-            }
+
 
             try {
                 Double distancia = distanceByCubeInMeters(cidadeNomeId,next);
