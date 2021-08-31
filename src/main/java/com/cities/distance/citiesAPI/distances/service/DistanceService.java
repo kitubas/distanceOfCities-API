@@ -32,13 +32,16 @@ public class DistanceService {
     }
 
     public Double distanceByCubeInMeters(Long city1, Long city2) {
-        log.info("distanceByCubeInMeters({}, {})", city1, city2);
-        final List<City> cities = cityRepository.findAllById((Arrays.asList(city1, city2)));
+        if (city1 != city2) {
+            log.info("distanceByCubeInMeters({}, {})", city1, city2);
+            final List<City> cities = cityRepository.findAllById((Arrays.asList(city1, city2)));
 
-        Point p1 = cities.get(0).getLocation();
-        Point p2 = cities.get(1).getLocation();
+            Point p1 = cities.get(0).getLocation();
+            Point p2 = cities.get(1).getLocation();
 
-        return cityRepository.distanceByCube(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+            return cityRepository.distanceByCube(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        }
+        return 0.0;
     }
 
     public Double distanceByName(String city1, String city2) {
