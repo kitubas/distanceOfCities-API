@@ -65,6 +65,7 @@ public class DistanceService {
         //List<City> content = all1.getContent();
 
         List<Long> allIds = cityRepository.getAllIds();
+        allIds.remove(cidadeNomeId);
 
 
         //for que demora mt pra carregar
