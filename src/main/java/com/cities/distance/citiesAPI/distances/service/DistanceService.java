@@ -88,12 +88,20 @@ public class DistanceService {
             if (i == allIds.size()) {
                 break;
             }
-
-            Double distancia = distanceByCubeInMeters(cidadeNomeId,next);
+            try {
+                Double distancia = distanceByCubeInMeters(cidadeNomeId,next);
                 if (distancia < menorDistancia) {
                     menorDistancia = distancia;
                     closestCity = cityRepository.findById(next).get().getName();
                 }
+            }catch (Exception e){
+                e.getCause();
+                e.getLocalizedMessage();
+                e.getMessage();
+            }
+
+
+
 
 
         }
