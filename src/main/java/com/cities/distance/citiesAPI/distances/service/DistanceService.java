@@ -32,7 +32,14 @@ public class DistanceService {
     }
 
     public Double distanceByCubeInMeters(Long city1, Long city2) {
-        if (city1 != city2) {
+        if (city1 == city2){
+            return Double.MAX_VALUE;
+        }
+        if (city1.equals(city2)){
+            return Double.MAX_VALUE;
+        }
+
+        else {
             log.info("distanceByCubeInMeters({}, {})", city1, city2);
             final List<City> cities = cityRepository.findAllById((Arrays.asList(city1, city2)));
 
@@ -41,7 +48,6 @@ public class DistanceService {
 
             return cityRepository.distanceByCube(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         }
-        return 0.0;
     }
 
     public Double distanceByName(String city1, String city2) {
@@ -73,14 +79,19 @@ public class DistanceService {
         //for que demora mt pra carregar
         for (int i = 0; i<allIds.size() ; i++) {
             Long next = allIds.get(i);
-            if (next != cidadeNomeId){
+            if (next == cidadeNomeId) {
+                i++;
+            }
+            if (next.equals(cidadeNomeId)){
+                i++;
+            }
             Double distancia = distanceByCubeInMeters(cidadeNomeId,next);
                 if (distancia < menorDistancia) {
                     menorDistancia = distancia;
                     closestCity = cityRepository.findById(next).get().getName();
                 }
 
-            }
+
         }
 
         //for que pega uma cidade aleatoria
