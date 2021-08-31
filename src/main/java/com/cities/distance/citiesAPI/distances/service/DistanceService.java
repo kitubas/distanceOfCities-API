@@ -86,7 +86,7 @@ public class DistanceService {
             if (next.equals(cidadeNomeId)){
                 i++;
             }
-            if (i >= allIds.size()) {
+            if (i >= allIds.size() || i>= allIds.indexOf(i)) {
                 break;
             }
 
@@ -97,9 +97,6 @@ public class DistanceService {
                     closestCity = cityRepository.findById(next).get().getName();
                 }
             }catch (Exception e){
-                e.getCause();
-                e.getLocalizedMessage();
-                e.getMessage();
                 return "A cidade mais próxima de " +cidadeNome.getName() + " é: "  + closestCity +
                         ". Distância de: " + menorDistancia + "metros" + " (caiu no try-catch)";
             }
