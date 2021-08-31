@@ -65,16 +65,17 @@ public class DistanceService {
         //List<City> content = all1.getContent();
 
         List<Long> allIds = cityRepository.getAllIds();
-        allIds.remove(cidadeNomeId);
 
 
         //for que demora mt pra carregar
         for (int i = 0; i<allIds.size() ; i++) {
             Long next = allIds.get(i);
+            if (next != cidadeNomeId){
             Double distancia = distanceByCubeInMeters(cidadeNomeId,next);
-            if (distancia < menorDistancia) {
-                menorDistancia = distancia;
-                closestCity = cityRepository.findById(next).get().getName();
+                if (distancia < menorDistancia) {
+                    menorDistancia = distancia;
+                    closestCity = cityRepository.findById(next).get().getName();
+                }
 
             }
         }
