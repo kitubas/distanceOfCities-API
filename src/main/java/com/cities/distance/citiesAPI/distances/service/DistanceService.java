@@ -85,6 +85,10 @@ public class DistanceService {
             if (next.equals(cidadeNomeId)){
                 i++;
             }
+            if (i == allIds.size()) {
+                break;
+            }
+
             Double distancia = distanceByCubeInMeters(cidadeNomeId,next);
                 if (distancia < menorDistancia) {
                     menorDistancia = distancia;
