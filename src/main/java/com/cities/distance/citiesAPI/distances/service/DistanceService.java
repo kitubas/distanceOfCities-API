@@ -85,9 +85,10 @@ public class DistanceService {
             if (next.equals(cidadeNomeId)){
                 i++;
             }
-            if (i == allIds.size()) {
+            if (i >= allIds.size()) {
                 break;
             }
+
             try {
                 Double distancia = distanceByCubeInMeters(cidadeNomeId,next);
                 if (distancia < menorDistancia) {
@@ -98,7 +99,7 @@ public class DistanceService {
                 e.getCause();
                 e.getLocalizedMessage();
                 e.getMessage();
-                return menorDistancia.toString();
+                return closestCity;
             }
 
 
@@ -116,7 +117,7 @@ public class DistanceService {
             }
         }*/
 
-        return closestCity.toString();
+        return closestCity;
 
 
 
